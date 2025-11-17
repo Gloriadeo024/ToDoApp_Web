@@ -1,9 +1,13 @@
 require('dotenv').config();
 const express = require('express');
 const connectDB = require('./config/db');
+//Add this line to import task routes
+const taskRoutes = require('./routes/taskRoutes');
 
 const app = express();
 app.use(express.json());
+//use this line also to set up task routes
+app.use('/api/task', taskRoutes);
 
 app.get('/', (req, res) => {
     res.json({ message: 'API is running...' });
